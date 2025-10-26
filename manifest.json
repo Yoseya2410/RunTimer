@@ -1,0 +1,21 @@
+{
+  "name": "跑步计时器",
+  "short_name": "跑步计时器",
+  "description": "一个用于跑步计时的应用程序",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f8f9fa",
+  "theme_color": "#007bff",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icons/icon-512x512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

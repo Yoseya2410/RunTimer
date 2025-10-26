@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#007bff">
+    <meta name="description" content="跑步计时器 - 一个用于跑步计时的 Progressive Web App">
+    <title>跑步计时器</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/icon-192x192.svg" type="image/svg+xml">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="跑步计时器">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+</head>
+<body>
+    <div class="container">
+        
+        <!-- 实时计时显示区域 -->
+        <div class="timer-display">
+            <div class="time" id="timeDisplay">00:00.00</div>
+        </div>
+        
+        <div class="controls">
+            <button id="addRunnerBtn">添加运动员</button>
+            <button id="startBtn">开始</button>
+            <button id="resetBtn">重置</button>
+            
+        </div>
+        
+        
+        <div class="runner-list">
+            <ul id="runners"></ul>
+        </div>
+    </div>
+    
+    <!-- 自定义弹窗 -->
+    <div id="runnerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>添加运动员</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>请输入运动员姓名（多个姓名请用空格分隔）</p>
+                <input type="text" id="runnerNamesInput" placeholder="例如: 张三 李四 王五">
+            </div>
+            <div class="modal-footer">
+                <button id="cancelModalBtn">取消</button>
+                <button id="confirmModalBtn">确定</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <!-- 注册 Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
